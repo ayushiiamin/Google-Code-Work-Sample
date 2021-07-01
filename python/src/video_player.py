@@ -205,19 +205,20 @@ class VideoPlayer:
         """
         vid_title_list = self._video_library.get_video(video_id)
 
-        if playlist_name.lower() not in map(str.lower, self.playList.keys()):
-            print("Cannot remove video from " + playlist_name + ": Playlist does not exist")
-        elif vid_title_list == None:
+        if vid_title_list == None:
             print("Cannot remove video from " + playlist_name + ": Video does not exist")
+        elif playlist_name.lower() not in map(str.lower, self.playList.keys()):
+            print("Cannot remove video from " + playlist_name + ": Playlist does not exist")
         elif playlist_name.lower() in map(str.lower, self.playList.keys()):
             for x in self.playList.keys():
                 if x.lower() == playlist_name.lower():
                     #print(x)
                     if self.playList[x].count(vid_title_list) == 0:
-                        print("Cannot remove video from " + playlist_name + ": Video does not exist")
+                        print("Cannot remove video from " + playlist_name + ": Video is not in playlist")
                     else:
-                        self.playList[x].append(vid_title_list)
+                        #del self.playList[vid_title_list._title]
                         print("Removed video from " + playlist_name + ": " + self.playList.get(x)[0]._title)
+                        self.playList[x].remove(vid_title_list)
 
     def clear_playlist(self, playlist_name):
         """Removes all videos from a playlist with a given name.
