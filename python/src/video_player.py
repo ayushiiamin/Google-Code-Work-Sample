@@ -194,7 +194,9 @@ class VideoPlayer:
                         print("No videos here yet")
                     else:
                         print("Showing playlist: " + playlist_name)
-                        print(self.playList.get(x)[0]._title + " " + "(" + self.playList.get(x)[0]._video_id + ")" + " " + "[{0}".format(' '.join(map(str, self.playList.get(x)[0]._tags))) + "]")
+                        length = len(self.playList.get(x))
+                        for i in range(length):
+                            print(self.playList.get(x)[i]._title + " " + "(" + self.playList.get(x)[i]._video_id + ")" + " " + "[{0}".format(' '.join(map(str, self.playList.get(x)[i]._tags))) + "]")
 
     def remove_from_playlist(self, playlist_name, video_id):
         """Removes a video to a playlist with a given name.
