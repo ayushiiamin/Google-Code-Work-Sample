@@ -175,7 +175,7 @@ class VideoPlayer:
             print("No playlists exist yet")
         else:
             print("Showing all playlists:")
-            for key in self.playList.keys():
+            for key in sorted(self.playList.keys()):
                 print(key)
 
     def show_playlist(self, playlist_name):
